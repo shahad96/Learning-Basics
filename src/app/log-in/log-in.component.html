@@ -1,0 +1,41 @@
+<div [ngStyle]= "{ backgroundColor: toggle ? 'pink' : 'white' }">
+<label for="name">Name:</label>
+<input type="text" name="name" #name>
+<br>
+<br>
+
+<label for="password">Password:</label>
+
+<input type="text" name="password" [(ngModel)]="password">
+<br>
+<br>
+<button class="btn btn-secondary" (click)="regester()">regester</button>
+
+ 
+<br>
+<br>
+<label>Choose your subjects:</label>
+<br>
+<br>
+<button class="btn btn-outline-secondary" (click)="Math()">Math</button>
+<button class="btn btn-outline-secondary" (click)="History()">History</button>
+<button class="btn btn-outline-secondary" (click)="English()">English</button>
+<button class="btn btn-outline-secondary" (click)="Science()">Science</button>
+<br>
+<br>
+<button class="btn btn-secondary" (click)="submet()">Show your subjects</button>
+<br>
+<br>
+<div *ngIf="toggle; else noSubjectsYet">
+<!-- <p *ngFor="let subject of subjects">{{subject}}</p> -->
+<app-home [subjects]="subjects">
+    <p>this is your subjects</p>
+</app-home>
+</div>
+<ng-template #noSubjectsYet>
+    <p>your subjects will shows here</p>
+</ng-template>
+<app-add-subject (newSubject)="addingSubject($event)"></app-add-subject>
+</div>
+
+
